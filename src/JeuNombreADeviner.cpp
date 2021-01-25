@@ -11,19 +11,24 @@
 // Historique du fichier:
 /*************************************************/
 #include <iostream>
+#include <ctime>
 using namespace std;
 #include "../include/JeuNombreAdeviner.h"
+
 
 // Nom :InitJoueur
 // Rôle : Crée un joueur. Initialise toutes les informations du joueur.
 //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
-// Paramètres d'entrée :
-// Paramètres de sortie :
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée : le nom du joueur
+// Paramètres de sortie : un joueur crée
 
 void InitJoueur(TJoueur& joueurAcreer, string un_nom)
+
 {
-    //A COMPLETER
+      joueurAcreer.nom= un_nom;
+      joueurAcreer.nbPartiesJouees=0;
+      joueurAcreer.nbPartiesGagnees=0;
+      joueurAcreer.nbTentatives=0;
 }
 
 
@@ -31,19 +36,14 @@ void InitJoueur(TJoueur& joueurAcreer, string un_nom)
 // Rôle : Tire aléatoirement un nombre à deviner entre 0 et 10
 // Valeur de retour : nombre à deviner
 
-int TirerNombreMystere()
-{
-    //A COMPLETER
-        return -1;
-}
 
 
 // Nom :JouerPartie
 // Rôle : Fait jouer une partie au joueur passé en paramètre
 //        A la fin, met à jour les informations du joueur
 // Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// Paramètres de sortie: un nombre à deviner
+// Paramètres d'entrée/sortie : le joueur
 
 void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 {
@@ -57,7 +57,7 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 // Paramètres de sortie:
 // Paramètres d'entrée/sortie :
 
-void MajResultatsJoueur(TJoueur joueur, int nbEssais, bool gagne)
+void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 {
    // A COMPLETER
 }
