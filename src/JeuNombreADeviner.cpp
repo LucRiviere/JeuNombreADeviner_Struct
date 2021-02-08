@@ -1,87 +1,142 @@
 /*************************************************/
-// Nom du projet: Jeu du nombre à deviner
+// Nom du projet: Jeu du nombre Ã  deviner
 // Nom du fichier: JeuNombreADeviner.cpp
 // Version : 1.0
-// Nom du programmeur: MP Pinaud
-// Date de création : 25/01/2021
-// Rôle du fichier: Contient le code des fonctions du jeu
+// Nom du programmeur: MP Pinaud/ Luc RiviÃ¨re
+// Date de crÃ©ation : 08/02/2021
+// RÃ´le du fichier: Contient le code des fonctions du jeu
 // Nom des composants utilises: JeuNombreADeviner.h
 //                              iostream
 //                              ctime
 // Historique du fichier:
+//Coder le MaiJeuNombreADevinercpp et le JeuNombreADeviner.cpp + parametrer les entrees/sorties dans le JeuNombreADeviner.h
 /*************************************************/
 #include <iostream>
 #include <ctime>
-using namespace std;
-#include "../include/JeuNombreAdeviner.h"
-
+#include "1.h"
 
 // Nom :InitJoueur
-// Rôle : Crée un joueur. Initialise toutes les informations du joueur.
-//        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
-// Paramètres d'entrée : le nom du joueur
-// Paramètres de sortie : un joueur crée
+// RÃ´le : CrÃ©e un joueur. Initialise toutes les informations du joueur.
+// Le nombre de tentatives, de parties gagnÃ©es et de parties jouÃ©es seront Ã  0.
 
-void InitJoueur(TJoueur& joueurAcreer, string un_nom)
+void InitJoueur(TJoueur &joueurAcreer, const string un_nom)
 
 {
-      joueurAcreer.nom= un_nom;
-      joueurAcreer.nbPartiesJouees=0;
-      joueurAcreer.nbPartiesGagnees=0;
-      joueurAcreer.nbTentatives=0;
+    joueurAcreer.Nom = un_nom;
+    joueurAcreer.nbTentatives = 0;
+    joueurAcreer.nbPartiesJouees = 0;
+    joueurAcreer.nbPartiesGagnees = 0;
 }
 
 
 // Nom :TirerNombreMystere
-// Rôle : Tire aléatoirement un nombre à deviner entre 0 et 10
-// Valeur de retour : nombre à deviner
+// RÃ´le : Tire alÃ©atoirement un nombre Ã  deviner entre 0 et 10
+// Valeur de retour : nombre Ã  deviner
 
-
-
-// Nom :JouerPartie
-// Rôle : Fait jouer une partie au joueur passé en paramètre
-//        A la fin, met à jour les informations du joueur
-// Paramètres d'entrée:
-// Paramètres de sortie: un nombre à deviner
-// Paramètres d'entrée/sortie : le joueur
-
-void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
+void TirerNombreMystere(int &tirage)
 {
-    //A COMPLETER
+    do
+    {
+      cout << "Tapez un chiffre valide entre 0 et 10" << "\n";
+      cin >> tirage
+  while ((tirage< 0) || (tirage > 10));
 }
 
+// Nom :JouerPartie
+// RÃ´le : Fait jouer une partie au joueur passÃ© en paramÃ¨tre
+//  A la fin, met Ã  jour les informations du joueur
+
+
+void JouerPartie (TJoueur &un_joueur, int nombreATrouver)
+
+{
+ std::srand (time(nullptr));
+  int n {10};
+  int nombreMystere= std::rand () % n;
+  int nombreATrouver{};
+  int tirage{};
+  int tentatives = 8;
+  int i;
+  TirerNombreMystere(tirage);
+  cout << "Nombre compris dans l'intervalle : " << tirage <<endl;
+
+  for (i = 0; i < tentatives; i++)
+    {
+      cout << "Trouve le nombre mystere" << endl;
+      nombreATrouver= tirage;
+      cin >> nombreATrouver;
+
+      if (nombreATrouver == nombreMystere)
+    {
+       cout << "Gagne" << endl;
+       break;
+    }
+
+      if (nombreATrouver < nombreATrouver)
+   {
+    cout << "More" <<endl;
+   }
+      else
+   {
+    cout << "Less" <<endl;
+   }
+
+      if (i == tentatives - 1)
+   {
+    cout << "Failed" <<endl;
+   }
+    }
+    cout << "Nombre d'essais : " << i;
+}
 
 // Nom : MajResultatsJoueur
-// Rôle : met à jour les informations du joueur passé en paramètre
-// Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// RÃ´le : met Ã  jour les informations du joueur passÃ© en paramÃ¨tre
+// ParamÃ¨tres d'entrÃ©e:
+// ParamÃ¨tres de sortie:
+// ParamÃ¨tres d'entrÃ©e/sortie :
 
-void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
+void MajResultatsJoueur(TJoueur &joueur, const int nbEssais, const bool gagne)
+
 {
-   // A COMPLETER
+    int tentatives{};
+    int tirage{};
+    int nombreMystere{};
+
+ TJoueur joueur1;
+ TirerNombreMystere(tirage);
+ tentatives=nbEssais;
+ tirage= true;
 }
 
 // Nom : ResultatsJoueur
-// Rôle : indique les résultats du joueur passé en paramètre
-//        le nombre de parties gagnées, le nombre de parties perdues, le nombre d'essais total
-//        La fonction N'affiche PAS les informations à l'écran
-// Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// RÃ´le : indique les rÃ©sultats du joueur passÃ© en paramÃ¨tre
+// Le nombre de parties gagnÃ©es, le nombre de parties perdues, le nombre d'essais total
+// La fonction N'affiche PAS les informations Ã  l'Ã©cran
 
-void ResultatsJoueur(TJoueur joueur, int& nbsucces, int& nbechec, int& nbessais)
+void ResultatsJoueur(const TJoueur &joueur, int &nbsuccess, int &nbechec, int &nbessais)
+
 {
-    // A COMPLETER
+    int tentatives{};
+    int tirage{};
+    int i{};
+
+ TJoueur joueur1;
+ tentatives=nbessais;
+ tirage = true;
+ tirage == nbsuccess;
+ i = false;
+ nbechec == i;
+
 }
 
 // Nom :Nom
-// Rôle : retourne le nom du joueur
-// Paramètres d'entrée: le joueur dont on veut le nom
+// RÃ´le : retourne le nom du joueur
+// ParamÃ¨tres d'entrÃ©e: le joueur dont on veut le nom
 // Valeur de retour : nom du joueur
 
-string Nom(TJoueur joueur){
+string Nom(TJoueur joueur)
 
-    return joueur.nom;
+{
+
+    return joueur.Nom;
 }
-
