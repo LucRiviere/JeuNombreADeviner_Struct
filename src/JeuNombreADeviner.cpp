@@ -13,8 +13,7 @@
 /*************************************************/
 #include <iostream>
 #include <ctime>
-#include "1.h"
-
+#include "JeuNombreADeviner.h"
 // Nom :InitJoueur
 // Rôle : Crée un joueur. Initialise toutes les informations du joueur.
 // Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
